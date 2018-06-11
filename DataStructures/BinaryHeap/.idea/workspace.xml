@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a7486d33-fa8e-4e56-91fe-37fa26ed95e5" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="BinaryHeap.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/BinaryHeap.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-924">
+              <caret line="89" column="25" selection-start-line="89" selection-start-column="25" selection-end-line="89" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>public class BinaryHeap \{\n    private final int d \= 2\;\n    private int heapSize\;\n    private final int\[\] heap\;\n\n\n    public static void main\(String\[\] args\) \{\n        BinaryHeap heap \= new BinaryHeap\(3\)\;\n        heap\.insert\(3\)\;\n        heap\.printHeap\(\)\;\n        System\.out\.println\(\&quot;\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\&quot;\)\;\n        heap\.insert\(2\)\;\n        heap\.printHeap\(\)\;\n        System\.out\.println\(\&quot;\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\&quot;\)\;\n        heap\.insert\(1\)\;\n        heap\.printHeap\(\)\;\n        System\.out\.println\(\&quot;\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\&quot;\)\;\n        heap\.delete\(0\)\;\n        heap\.printHeap\(\)\;\n        System\.out\.println\(\&quot;\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\&quot;\)\;\n\/\*        int\[\] nums \= \{1\,2\,3\}\;\n        int a \= \(0\-1\)\/2\;\n        System\.out\.println\(a\)\;\n        System\.out\.println\(nums\[a\]\)\;\*\/\n    \}\n    public BinaryHeap\(int capacity\) \{\n        this\.heapSize \= 0\;\n        heap \= new int\[capacity\]\;\n    \}\n\n    public boolean isEmpty\(\) \{\n        return heapSize \=\= 0\;\n    \}\n\n    public boolean isFull\(\) \{\n        return heapSize \=\= heap\.length\;\n    \}\n\n    public int parent\(int childIdx\) \{\n        return \(childIdx \- 1\) \/ 2\;\n    \}\n\n    public int getKthChild \(int i\, int k\) \{\n        return 2 \* i \+ k\;\n    \}\n\n    public void insert\(int x\) \{\n        if \(\!isFull\(\)\) \{\n            heap\[heapSize\] \= x\;\n            heapifyUp3\(heapSize\)\;\n            heapSize\+\+\;\n        \}\n    \}\n\n\n    \/\*\n    \* delete \-\&gt; replace it with the last value of heap\n    \* heapifyDown the index\n    \* \*\/\n    public void delete\(int idx\) \{\n        if \(idx \&gt;\= heapSize\) \{\n            throw new IllegalArgumentException\(\)\;\n        \}\n\n        \/\/ if there is one element in heap\n        if \(heapSize \=\= 1\) \{\n            heap\[idx\] \= 0\;\n            return\;\n        \}\n\n        heap\[idx\] \= heap\[heapSize \- 1\]\;\n        heap\[heapSize \- 1\] \= 0\;\n        heapSize\-\-\;\n        heapifyDown\(idx\)\;\n    \}\n\n    \/\*\n    \* General idea\: find min of 2 child \-\&gt; swap\n    \* \*\/\n\n    \/\*\n    assumption\: cur has at least one child\n    \* \*\/\n    public int getMinIdx\(int childIdx\) \{\n        int leftIdx \= getKthChild\(childIdx\, 1\)\;\n        int valLeft \= heap\[leftIdx\]\;\n\n        \/\/ cur has right child\n        int rightIdx \= getKthChild\(childIdx\,2\)\;\n        if \(rightIdx \&lt; heapSize\) \{\n            int valRight \= heap\[rightIdx\]\;\n            return \(valLeft \&lt; valRight\) \? leftIdx \: rightIdx\;\n        \} else \{\n            return leftIdx\;\n        \}\n    \}\n    \n    \/\/\n    public void heapifyDown\(int childIdx\) \{\n        if \(getKthChild\(childIdx\, 1\) \&gt;\= heapSize\) return\;\n\n        int minIdx \= getMinIdx\(childIdx\)\;\n\n        if \(heap\[childIdx\] \&lt; heap\[minIdx\]\) return\;\n\n        swap\(childIdx\, minIdx\)\;\n        childIdx \= minIdx\;\n        heapifyDown\(childIdx\)\;\n    \}\n\n\n    public void heapifyUp\(int childIdx\) \{\n        if \(childIdx \&lt;\= 0\) return\;\n\n        int parentIdx \= parent\(childIdx\)\;\n\n        if \(heap\[childIdx\] \&gt; heap\[parentIdx\]\) return\;\n\n        swap\(childIdx\, parentIdx\)\;\n        heapifyUp\(parentIdx\)\;\n    \}\n\n    \/\*\n    \* General idea\:\n    \* Important \: if childIdx \&gt;\= 0 \-\&gt; parentIndx \&gt;\= 0\n    \* \*\/\n    public void heapifyUp2\(int childIdx\) \{\n        int parentIdx \= parent\(childIdx\)\;\n        while \(childIdx \&gt; 0 \&amp;\&amp; heap\[parentIdx\] \&gt; heap\[childIdx\]\) \{\n            swap\(parentIdx\, childIdx\)\;\n            childIdx \= parentIdx\;\n            parentIdx \= parent\(childIdx\)\;\n        \}\n    \}\n\n    \/\*\n    \* General idea\: use temp to store the childIdx val to decrease the operation of swap\n    \*\n     \* 1\. store the init val heap\[childIdx\]\n     \* 2\. swap\n     \*   2\.1 childIdx greater than 0 and smaller than its parent\n     \*   2\.2 assign the parent val to child\n     \* 3\. assign the temp to final child val\n     \* \*\/\n    public void heapifyUp3\(int childIdx\) \{\n        int temp \= heap\[childIdx\]\;\n\n        while \(childIdx \&gt; 0 \&amp;\&amp; heap\[childIdx\] \&lt; heap\[parent\(childIdx\)\]\) \{\n            heap\[childIdx\] \= heap\[parent\(childIdx\)\]\;\n            childIdx \= parent\(childIdx\)\;\n        \}\n        heap\[childIdx\] \= temp\;\n    \}\n\n\n\n    public void printHeap\(\) \{\n        for\(int i \: heap\) \{\n            System\.out\.println\(i\)\;\n        \}\n    \}\n\n    public void swap\(int idx1\, int idx2\) \{\n        int temp \= heap\[idx1\]\;\n        heap\[idx1\] \= heap\[idx2\]\;\n        heap\[idx2\] \= temp\;\n    \}\n\}\n</find>
+    </findStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/BinaryHeap.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="65" />
+    <option name="y" value="24" />
+    <option name="width" value="1295" />
+    <option name="height" value="664" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="BinaryHeap" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BinaryHeap" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BinaryHeap" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BinaryHeap" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+    </configuration>
+    <configuration name="BinaryHeap" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="BinaryHeap" />
+      <module name="BinaryHeap" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.BinaryHeap" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a7486d33-fa8e-4e56-91fe-37fa26ed95e5" name="Default" comment="" />
+      <created>1528277132170</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1528277132170</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="64" y="-11" width="1297" height="780" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32882884" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32882884" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16138996" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3993994" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="5" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/BinaryHeap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1100">
+          <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BinaryHeap.kt" />
+    <entry file="file://$PROJECT_DIR$/src/BinaryHeap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-924">
+          <caret line="89" column="25" selection-start-line="89" selection-start-column="25" selection-end-line="89" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
