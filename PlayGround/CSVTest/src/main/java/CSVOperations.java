@@ -24,7 +24,9 @@ public class CSVOperations {
 
     /*
     * @params: int[] display
-    *
+    *           the numbers of columns to show in the ouput
+    * @params: int[] key
+    *           the numbers of columns to determine the duplication of the row
     * */
     public void removeDup(int[] display, int[] key) {
         int displayLength = display.length;
