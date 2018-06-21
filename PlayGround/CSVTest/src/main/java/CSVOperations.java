@@ -24,7 +24,7 @@ public class CSVOperations {
 
     /*
     * @params: int[] display
-    *           the numbers of columns to show in the ouput
+    *           the numbers of columns to show in the ouput and order matters
     * @params: int[] key
     *           the numbers of columns to determine the duplication of the row
     * */
@@ -35,7 +35,16 @@ public class CSVOperations {
         for (int k : key) {
             prevKeys.put(k, null);
         }
-
+        /*
+        * Algo
+        * 1. create CSVParser and CSVPrinter
+        * 2. IMPORTANT:  why hashmap to store the previous key
+        *                   (a) fast to access the key - value
+        *                   (b) meantime easy to revise
+        * 3. step:
+        *       (i) set a varible notEqual(DEFAULT: 'false') when iterating map find one inequal value set 'true' meantime
+        *           set corresponding key with current value;
+        */
         try (Reader reader = Files.newBufferedReader(Paths.get(inputPath), charset);
              CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
              BufferedWriter writer = Files.newBufferedWriter(Paths.get(outputPath), charset);
