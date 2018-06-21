@@ -2,7 +2,7 @@
 # [Programming Interview Study Guide](https://haseebq.com/how-to-break-into-tech-job-hunting-and-interviews/)
 > First and foremost, work through the Princeton algorithms course. You should follow along and implement as much as you can. Along the way, also implement all these major data structures. (Many of these are not explicitly covered in the course—implement them on your own).TAKE CARE OF [Code Style](https://google.github.io/styleguide/javaguide.html) :-)
 
-* - [ ] Linked List
+* - [x] Linked List
 * [Dynamic array](https://en.wikipedia.org/wiki/Dynamic_array), implemented with a [ring buffer](https://en.wikipedia.org/wiki/Circular_buffer) (use a statically sized array underneath the hood)
 * - [ ] Hash set
 * - [ ] [Hash map (with chaining)](https://en.wikipedia.org/wiki/Hash_table#Separate_chaining_with_linked_lists)
