@@ -11,4 +11,6 @@ Main Idea: choose the column set the agg func to each of them before entering th
 * select creditRating from ProDatalog
 * in the series blank ,choose the creditRating
 * **IMPORTANT** After adding to the dashboard, if there is some values missing. It is because graph is not big enough to show the word cloud. _SOLUTION_: 1. change the font size of the word 2. enlarge the graph in the dashboard.
-
+## 3. where clause
+> because the value in column include quotation
+* status != '"CREDIT_FAILURE"'
