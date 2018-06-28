@@ -1,0 +1,5 @@
+List<List<Integer>> result = new LinkedList<>();
+List<Integer> temp = new LinkedList<>();
+return result;
+
+https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum--Partioning)Palindrome
