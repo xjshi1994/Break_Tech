@@ -22,21 +22,22 @@ var steps = [
 		document.querySelector('input[name="username"]').value = usr
 		document.querySelector('input[name="password"]').value = pwd
 		document.querySelector('form').submit()
-	
-	
 	}, username, password)
 
  },
  function() {
 	console.log('hah')
-	page.open(url2, function(status){ 
+/*	page.open(url2, function(status){ 
 			console.log('cap success')
 			setTimeout(function(){
 				page.zoomFactor = 0.25
 				page.render('superset2.jpg', {format: 'jpg', quality: '100'})
 			}, 6000)
-	})
- }
+	})*/
+	setTimeout(function() {
+		page.render('superset2.jpg')
+	}, 1000) 
+}
 ]
 
 var stepindex = 0
