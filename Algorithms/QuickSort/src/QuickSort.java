@@ -19,7 +19,7 @@ public class QuickSort {
     * 2. recursive sort left and right
     * */
     public void sort(int[] nums, int start, int end) {
-        if (start < end) {
+        if (start <= end) {
             int pIndex = partition(nums, start, end);
             sort(nums, start, pIndex - 1);
             sort(nums, pIndex + 1, end);
